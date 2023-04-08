@@ -15,6 +15,11 @@ async function transformImages() {
         await sharp(`${basePath}/image${i}.jpeg`)
           .resize(size)
           .toFile(`${basePath}/${size}/image${i}.webp`);
+
+          await sharp(`${basePath}/image${i}.jpeg`)
+          .resize(size)
+          .jpeg({quality: 80})
+          .toFile(`${basePath}/${size}/image${i}-compressed.jpeg`);
       }
     });
   } catch (error) {
