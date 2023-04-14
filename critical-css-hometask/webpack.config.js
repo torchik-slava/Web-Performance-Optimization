@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const miniCss = require('mini-css-extract-plugin');
+const HtmlCriticalWebpackPlugin = require("html-critical-webpack-plugin");
 
 module.exports = {
     mode: 'production',
@@ -37,6 +38,20 @@ module.exports = {
         }),
         new miniCss({
             filename: 'style.css',
+        }),
+        new HtmlCriticalWebpackPlugin({
+            base: path.resolve(__dirname, 'dist'),
+            src: 'index.html',
+            dest: 'index.html',
+            inline: true,
+            minify: true,
+            extract: true,
+            // Dimensions: iPhone 5/SE
+            width: 320,
+            height: 568,
+            penthouse: {
+              blockJSRequests: false,
+            }
         }),
     ],
 };
