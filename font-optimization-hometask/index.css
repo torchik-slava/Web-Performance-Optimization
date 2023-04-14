@@ -1,0 +1,29 @@
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+000-5FF;
+  src: local("Roboto"),
+    url("/fonts/roboto-v20-latin/roboto-v20-latin-regular.woff2") format("woff2"),
+    url("/fonts/roboto-v20-latin/roboto-v20-latin-regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+000-5FF;
+  src: local("Raleway"),
+    url("/fonts/raleway-v19-latin/raleway-v19-latin-regular.woff2") format("woff2"),
+    url("/fonts/raleway-v19-latin/raleway-v19-latin-regular.woff") format("woff");
+}
+
+h1 {
+  font-family: "Raleway";
+}
+
+p {
+  font-family: "Roboto";
+}
