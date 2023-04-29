@@ -1,12 +1,20 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const miniCss = require('mini-css-extract-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
     mode: 'development',
-    entry: path.resolve(__dirname, 'src/index.js'),
+    entry: {
+        index: {
+          import: './src/index.js',
+          dependOn: 'service-worker',
+        },
+        'service-worker': './src/service-worker.js',
+    },
     output: {
-        filename: 'bundle.js',
+        filename: '[name].js',
+        path: path.resolve(__dirname, 'dist'),
     },
     module: {
         rules: [
@@ -38,5 +46,8 @@ module.exports = {
         new miniCss({
             filename: 'style.css',
         }),
+        // this plugin generate own SW and ignore service-worker.js
+        // it's suitable only for 1st task
+        //new WorkboxPlugin.GenerateSW(),
     ],
 };
